@@ -18,8 +18,8 @@ In my tests, this library works fine in Firefox, but in Chrome, it is necessary 
 
 ## Performance comparison
 
-* [Original animation](http://jsbin.com/cimele) using `(fps 60)` and the 0.13 runtime
-* [Updated animation](http://jsbin.com/mutage) using `Monitor.refresh` and the modified runtime
+* [Original animation](http://jsbin.com/mutage) using `(fps 60)` and the 0.13 runtime
+* [Updated animation](http://jsbin.com/cimele) using `Monitor.refresh` and the modified runtime
 
 The difference is more impressive in Chrome than it is in Firefox. Smooth animation in Firefox appears to be more strongly limited by garbage collection pauses.
 
