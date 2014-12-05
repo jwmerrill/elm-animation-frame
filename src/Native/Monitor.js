@@ -36,7 +36,7 @@ Elm.Native.Monitor.make = function(elm) {
       wasOn = isOn;
       return t;
     }
-    return A3( Signal.lift2, F2(f), isOn, ticker );
+    return A3( Signal.map2, F2(f), isOn, ticker );
   }
 
   return elm.Native.Monitor.values = {
