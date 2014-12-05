@@ -12,6 +12,7 @@ fire once per frame.
 
 import Native.Monitor
 import Signal
+import Time
 
 {-| Same as the refresh function, but you can turn it on and off. Allows you
 to do brief animations based on user input without major inefficiencies.
@@ -19,13 +20,12 @@ The first time delta after a pause is always zero, no matter how long
 the pause was. This way summing the deltas will actually give the amount
 of time that the output signal has been running.
 -}
-refreshWhen : Signal Bool -> Signal Time
+refreshWhen : Signal.Signal Bool -> Signal.Signal Time.Time
 refreshWhen = Native.Monitor.refreshWhen
 
 
-{-| Takes desired number of frames per second (fps). The resulting signal
-gives a sequence of time deltas representing the amount of time between
-each frame.
+{-| Signal that fires once per frame with the time delta since the last frame.
+Note that "once per frame" is an intent, not a guarantee.
 -}
-refresh : Signal Time
+refresh : Signal.Signal Time.Time
 refresh = refreshWhen (Signal.constant True)
