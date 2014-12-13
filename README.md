@@ -1,13 +1,15 @@
 # Elm Monitor
 
-This library provides time Signals that are synchronized to the monitor's refresh rate, by binding javascript's requestAnimationFrame. Using `Monitor.refresh` or `Monitor.refreshWhen pred` instead of `(fps 60)` or `(fpsWhen pred 60)` makes it possible (but not guaranteed...) to achieve 60 fps animation without stutter in Elm.
+This library provides time Signals that are synchronized to the monitor's refresh rate, by binding javascript's requestAnimationFrame. Using `Monitor.refresh` or `Monitor.refreshWhen` instead of `(Time.fps 60)` or `(Time.fpsWhen 60)` makes it possible (but not guaranteed...) to achieve 60 fps animation without stutter in Elm.
 
 ## Example Usage
 
 ```elm
 import Monitor
+import Text
+import Signal
 
-main = asText <~ (foldp (+) 0 Monitor.refresh)
+main = Signal.map Text.asText (Signal.foldp (+) 0 Monitor.refresh)
 ```
 
 ## Performance comparison
