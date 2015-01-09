@@ -1,4 +1,4 @@
-import Monitor
+import AnimationFrame
 import Signal
 import Text
 import Mouse
@@ -10,5 +10,5 @@ display counter1 counter2 = flow down
     ]
 
 main = Signal.map2 display
-    (Signal.foldp (+) 0 Monitor.refresh)
-    (Signal.foldp (+) 0 (Monitor.refreshWhen Mouse.isDown))
+    (Signal.foldp (+) 0 AnimationFrame.frame)
+    (Signal.foldp (+) 0 (AnimationFrame.frameWhen Mouse.isDown))

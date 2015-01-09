@@ -1,9 +1,9 @@
-Elm.Native.Monitor = {};
-Elm.Native.Monitor.make = function(elm) {
+Elm.Native.AnimationFrame = {};
+Elm.Native.AnimationFrame.make = function(elm) {
 
   elm.Native = elm.Native || {};
-  elm.Native.Monitor = elm.Native.Monitor || {};
-  if (elm.Native.Monitor.values) return elm.Native.Monitor.values;
+  elm.Native.AnimationFrame = elm.Native.AnimationFrame || {};
+  if (elm.Native.AnimationFrame.values) return elm.Native.AnimationFrame.values;
 
   var Signal = Elm.Signal.make(elm);
   var NS = Elm.Native.Signal.make(elm);
@@ -13,7 +13,7 @@ Elm.Native.Monitor.make = function(elm) {
   var requestAnimationFrame = window.requestAnimationFrame || function () {};
   var cancelAnimationFrame = window.cancelAnimationFrame || function () {};
 
-  function refreshWhen(isOn) {
+  function frameWhen(isOn) {
     var prev = 0, curr = prev, diff = 0, wasOn = true;
     var ticker = NS.input(diff);
     function tick(zero) {
@@ -39,8 +39,8 @@ Elm.Native.Monitor.make = function(elm) {
     return A3( Signal.map2, F2(f), isOn, ticker );
   }
 
-  return elm.Native.Monitor.values = {
-    refreshWhen : refreshWhen
+  return elm.Native.AnimationFrame.values = {
+    frameWhen : frameWhen
   };
 
 };

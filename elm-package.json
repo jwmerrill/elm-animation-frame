@@ -1,13 +1,13 @@
 {
     "version": "1.0.0",
-    "summary": "A signal that is synchronized with the monitor's refresh rate.",
+    "summary": "A signal that is synchronized with the monitor's frame rate.",
     "repository": "https://github.com/jwmerrill/elm-animation-frame.git",
     "license": "BSD3",
     "source-directories": [
         "src"
     ],
     "native-modules": true,
-    "exposed-modules": ["Monitor"],
+    "exposed-modules": ["AnimationFrame"],
     "dependencies": {
         "elm-lang/core": "1.0.0 <= v < 2.0.0"
     }
