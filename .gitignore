@@ -1,2 +1,4 @@
 build/*
 elm-stuff/*
+
+examples/*.html

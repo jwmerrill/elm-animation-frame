@@ -12,11 +12,10 @@ import Signal
 main = Signal.map Text.asText (Signal.foldp (+) 0 AnimationFrame.frame)
 ```
 
-## Performance comparison
+See `examples/counter.elm` for a minimal working example that uses both `AnimationFrame.frame` and `AnimationFrame.frameWhen`. You can build the example by running
 
-* [Original animation](http://jsbin.com/mutage) using `(fps 60)` and the 0.13 runtime
-* [Updated animation](http://jsbin.com/cimele) using `AnimationFrame.frame` and the modified runtime
+```
+elm-make --output=examlpes/counter.html examples/counter.elm
+```
 
-The difference is more impressive in Chrome than it is in Firefox. Smooth animation in Firefox appears to be more strongly limited by garbage collection pauses.
-
-The source code for the original animation is [available here](http://share-elm.com/sprout/54684d3de4b00800031feba0). The updated example just replaces `(fps 60)` with `AnimationFrame.frame`, but also uses the updated runtime.
+and then view it by opening the newly built `examples/counter.html`.
