@@ -6,7 +6,7 @@ to `(Time.fps 60)` and `(Time.fpsWhen 60)` respectively, but they more reliably
 fire once per frame.
 
 #Tickers
-@docs frame frameWhen
+@docs frame, frameWhen
 -}
 
 
