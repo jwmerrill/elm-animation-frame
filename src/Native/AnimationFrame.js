@@ -14,29 +14,29 @@ Elm.Native.AnimationFrame.make = function(elm) {
   var cancelAnimationFrame = window.cancelAnimationFrame || function () {};
 
   function frameWhen(isOn) {
-    var prev = 0, curr = prev, diff = 0, wasOn = true;
-    var ticker = NS.input(diff);
-    function tick(zero) {
-      return function(curr) {
-        diff = zero ? 0 : curr - prev;
-        if (prev > curr) {
-          diff = 0;
-        }
-        prev = curr;
-        elm.notify(ticker.id, diff);
-      };
+    var prev = 0, curr = 0, wasOn = true;
+    var ticker = NS.input(curr);
+    function tick(curr) {
+      var diff = (curr > prev) ? curr - prev : 0;
+      prev = curr;
+      elm.notify(ticker.id, diff);
+    }
+    // When we transition from off to on, reset prev so that the first tick will be 0.
+    function zeroThenTick(curr) {
+      prev = curr;
+      tick(curr);
     }
     var rafID = 0;
     function f(isOn, t) {
       if (isOn) {
-        rafID = requestAnimationFrame(tick(!wasOn && isOn));
+        rafID = requestAnimationFrame(wasOn ? tick : zeroThenTick);
       } else if (wasOn) {
         cancelAnimationFrame(rafID);
       }
       wasOn = isOn;
       return t;
     }
-    return A3( Signal.map2, F2(f), isOn, ticker );
+    return A3(Signal.map2, F2(f), isOn, ticker);
   }
 
   return elm.Native.AnimationFrame.values = {
