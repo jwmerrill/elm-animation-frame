@@ -1,14 +1,14 @@
 Elm.Native.AnimationFrame = {};
-Elm.Native.AnimationFrame.make = function(elm) {
+Elm.Native.AnimationFrame.make = function(localRuntime) {
 
-  elm.Native = elm.Native || {};
-  elm.Native.AnimationFrame = elm.Native.AnimationFrame || {};
-  if (elm.Native.AnimationFrame.values) return elm.Native.AnimationFrame.values;
+  localRuntime.Native = localRuntime.Native || {};
+  localRuntime.Native.AnimationFrame = localRuntime.Native.AnimationFrame || {};
+  if (localRuntime.Native.AnimationFrame.values) return localRuntime.Native.AnimationFrame.values;
 
-  var Signal = Elm.Signal.make(elm);
-  var NS = Elm.Native.Signal.make(elm);
+  var Signal = Elm.Signal.make(localRuntime);
+  var NS = Elm.Native.Signal.make(localRuntime);
 
-  // TODO Should be elm.requestAnimationFrame, and should be shimmed if we care
+  // TODO Should be localRuntime.requestAnimationFrame, and should be shimmed if we care
   // about IE9. Do we care about IE9?
   var requestAnimationFrame = window.requestAnimationFrame || function () {};
   var cancelAnimationFrame = window.cancelAnimationFrame || function () {};
@@ -19,7 +19,7 @@ Elm.Native.AnimationFrame.make = function(elm) {
     function tick(curr) {
       var diff = (curr > prev) ? curr - prev : 0;
       prev = curr;
-      elm.notify(ticker.id, diff);
+      localRuntime.notify(ticker.id, diff);
     }
     // When we transition from off to on, reset prev so that the first tick will be 0.
     function zeroThenTick(curr) {
@@ -39,7 +39,7 @@ Elm.Native.AnimationFrame.make = function(elm) {
     return A3(Signal.map2, F2(f), isOn, ticker);
   }
 
-  return elm.Native.AnimationFrame.values = {
+  return localRuntime.Native.AnimationFrame.values = {
     frameWhen : frameWhen
   };
 
