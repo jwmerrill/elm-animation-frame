@@ -1,5 +1,5 @@
 {
-    "version": "1.1.0",
+    "version": "1.0.3",
     "summary": "A signal that is synchronized with the monitor's frame rate.",
     "repository": "https://github.com/jwmerrill/elm-animation-frame.git",
     "license": "BSD3",
