@@ -7,6 +7,7 @@ Elm.Native.AnimationFrame.make = function(localRuntime) {
 
   var Signal = Elm.Signal.make(localRuntime);
   var NS = Elm.Native.Signal.make(localRuntime);
+  var Task = Elm.Native.Task.make(localRuntime);
 
   // TODO Should be localRuntime.requestAnimationFrame, and should be shimmed if we care
   // about IE9. Do we care about IE9?
@@ -39,8 +40,15 @@ Elm.Native.AnimationFrame.make = function(localRuntime) {
     return A3(Signal.map2, F2(f), isOn, ticker);
   }
 
+  var wait = Task.asyncFunction(function(callback) {
+    requestAnimationFrame(function(time) {
+      callback(Task.succeed(time));
+    });
+  });
+
   return localRuntime.Native.AnimationFrame.values = {
-    frameWhen : frameWhen
+    frameWhen : frameWhen,
+    wait : wait
   };
 
 };
