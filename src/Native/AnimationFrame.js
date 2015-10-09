@@ -14,8 +14,8 @@ Elm.Native.AnimationFrame.make = function(localRuntime) {
   var cancelAnimationFrame = window.cancelAnimationFrame || function () {};
 
   function frameWhen(isOn) {
-    var prev = 0, curr = 0, wasOn = true;
-    var ticker = NS.input(curr);
+    var prev = 0, wasOn = true;
+    var ticker = NS.input('elm-animation-frame', 0);
     function tick(curr) {
       var diff = (curr > prev) ? curr - prev : 0;
       prev = curr;

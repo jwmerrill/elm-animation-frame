@@ -1,12 +1,11 @@
 import AnimationFrame
 import Signal
-import Text
 import Mouse
-import Graphics.Element (flow, down)
+import Graphics.Element exposing (show, flow, down)
 
 display counter1 counter2 = flow down
-    [ Text.asText counter1
-    , Text.asText counter2
+    [ show counter1
+    , show counter2
     ]
 
 main = Signal.map2 display
