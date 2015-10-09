@@ -36,7 +36,7 @@ Elm.Native.AnimationFrame.make = function(localRuntime) {
       wasOn = isOn;
       return t;
     }
-    return A3(Signal.map2, F2(f), isOn, ticker);
+    return A3(Signal.map2, F2(f), NS.dropRepeats(isOn), ticker);
   }
 
   return localRuntime.Native.AnimationFrame.values = {
