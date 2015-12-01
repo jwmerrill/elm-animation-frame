@@ -6,10 +6,10 @@ This library provides time Signals that are synchronized to the monitor's frame 
 
 ```elm
 import AnimationFrame
-import Text
+import Graphics.Element
 import Signal
 
-main = Signal.map Text.asText (Signal.foldp (+) 0 AnimationFrame.frame)
+main = Signal.map Graphics.Element.show (Signal.foldp (+) 0 AnimationFrame.frame)
 ```
 
 See `examples/counter.elm` for a minimal working example that uses both `AnimationFrame.frame` and `AnimationFrame.frameWhen`. You can see this example in action [here](http://squishythinking.com/elm-animation-frame/examples/counter.html). The top counter uses `AnimationFrame.frame` to count continuously. The bottom counter uses `AnimationFrame.frameWhen` to count only when the mouse is down.
