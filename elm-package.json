@@ -1,6 +1,6 @@
 {
-    "version": "1.0.4",
-    "summary": "A signal that is synchronized with the monitor's frame rate.",
+    "version": "1.0.6",
+    "summary": "DEPRECATED: replaced by elm-lang/animation-frame",
     "repository": "https://github.com/jwmerrill/elm-animation-frame.git",
     "license": "BSD3",
     "source-directories": [
