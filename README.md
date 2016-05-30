@@ -1,5 +1,11 @@
 # AnimationFrame
 
+## Deprecation Notice
+
+As of Elm 0.17, this package has been replaced with [elm-lang/animation-frame](http://package.elm-lang.org/packages/elm-lang/animation-frame/1.0.0/), which provides an animation frame subscription in place of this package's animation frame signal.
+
+## Legacy Documentation:
+
 This library provides time Signals that are synchronized to the monitor's frame rate, by binding javascript's requestAnimationFrame. Using `AnimationFrame.frame` or `AnimationFrame.frameWhen` instead of `(Time.fps 60)` or `(Time.fpsWhen 60)` makes it possible (but not guaranteed...) to achieve 60 fps animation without stutter in Elm.
 
 ## Example Usage
